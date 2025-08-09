@@ -49,10 +49,6 @@ item_to_price_map={
 df1["Price Per Unit"]=np.where(df1["Price Per Unit"].isnull(),df1["Item"].map(item_to_price_map),df1["Price Per Unit"])
 df1["Total Spent"] = np.where(df1["Total Spent"].isnull(),df1["Quantity"]*df1["Price Per Unit"],df1["Total Spent"])
 df1["Quantity"] = np.where(df1["Quantity"].isnull(),df1["Total Spent"]/df1["Price Per Unit"],df1["Quantity"])
-#missing=df1[df1["Price Per Unit"].isnull()|df1["Total Spent"].isnull()|df1["Quantity"].isnull()|df1["Item"].isnull()]
-#print(missing)
-#print((df1.isnull()|(df1.astype(str).map(str.strip)=='')).sum())
-#df1.head(10)
 df1.to_csv("Full_Cleaned_Data.csv",index=False)
 
 
